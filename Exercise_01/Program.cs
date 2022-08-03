@@ -51,20 +51,28 @@ namespace Exercise_01
 
         public void sortArr(int[] arr)
         {
-            for (int i = 0; i < arr.Length - 1; i++)
-            {
-                for (int j = 0; j < arr.Length - i - 1; j++)
-                {
+            //for (int i = 0; i < arr.Length - 1; i++)
+            //{
+            //    for (int j = 0; j < arr.Length - i - 1; j++)
+            //    {
 
-                    if (arr[j] > arr[j + 1])
-                    {
-                        arr[j] ^= arr[j + 1];
-                        arr[j + 1] ^= arr[j];
-                        arr[j] ^= arr[j + 1];
-                    }
-                }
+            //        if (arr[j] > arr[j + 1])
+            //        {
+            //            arr[j] ^= arr[j + 1];
+            //            arr[j + 1] ^= arr[j];
+            //            arr[j] ^= arr[j + 1];
+            //        }
+            //    }
+            //}
+
+            int[] sortedArr = new int[arr.Length];
+            for(int i=arr.Length-1; i>=0; i--)
+            {
+                Array.Copy(arr, Array.IndexOf(arr, arr.Max()), sortedArr, i, 1);
+                Array.Clear(arr, Array.IndexOf(arr, arr.Max()), 1);
             }
-            foreach (int num in arr)
+
+            foreach (int num in sortedArr)
             {
                 Console.Write($"{num}  ");
             }
