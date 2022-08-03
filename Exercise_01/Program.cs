@@ -10,13 +10,19 @@ namespace Exercise_01
     {
         static void Main(string[] args)
         {
-            // A
-            // ABA
-            // ABCBA
-            // ABCDCBA
-            // ABCDEDCBA
-
-            for (int i = 0; i <= 5; i++)
+        // A
+        // ABA
+        // ABCBA
+        // ABCDCBA
+        // ABCDEDCBA
+        Get_Input:
+            int lines = Convert.ToInt32(Console.ReadLine());
+            if (lines > 26) 
+            {
+                Console.WriteLine("Lines must be less than 27");
+                goto Get_Input; 
+            }
+            for (int i = 0; i <= lines; i++)
             {
                 int str = 65;
                 for (int j = 1; j < 2 * i; j++)
@@ -35,7 +41,33 @@ namespace Exercise_01
                 }
                 Console.WriteLine("\n");
             }
+            Console.WriteLine("\n---------------Sorting Array-----------------------\n");
+            int[] array = new int[10] { 1, 9, 5, 3, 6, 8, 4, 2, 7, 0 };
+            Program program = new Program();
+            program.sortArr(array);
+
             Console.ReadLine();
+        }
+
+        public void sortArr(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - i - 1; j++)
+                {
+
+                    if (arr[j] > arr[j + 1])
+                    {
+                        arr[j] ^= arr[j + 1];
+                        arr[j + 1] ^= arr[j];
+                        arr[j] ^= arr[j + 1];
+                    }
+                }
+            }
+            foreach (int num in arr)
+            {
+                Console.Write($"{num}  ");
+            }
         }
     }
 }
